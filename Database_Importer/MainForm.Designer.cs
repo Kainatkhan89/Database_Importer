@@ -137,6 +137,7 @@
             btnLoadTables.TabIndex = 7;
             btnLoadTables.Text = "Load Database Tables";
             btnLoadTables.UseVisualStyleBackColor = false;
+            btnLoadTables.Click += btnLoadTables_Click;
             // 
             // groupBox1
             // 
@@ -197,13 +198,14 @@
             btnLoadCols.TabIndex = 18;
             btnLoadCols.Text = "Load Tables Columns";
             btnLoadCols.UseVisualStyleBackColor = false;
+            btnLoadCols.Click += btnLoadCols_Click;
             // 
             // label5
             // 
             label5.AutoSize = true;
             label5.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label5.ForeColor = Color.IndianRed;
-            label5.Location = new Point(473, 5);
+            label5.Location = new Point(473, 7);
             label5.Name = "label5";
             label5.Size = new Size(368, 48);
             label5.TabIndex = 16;
@@ -217,6 +219,7 @@
             dgvMapping.RowHeadersWidth = 62;
             dgvMapping.Size = new Size(1260, 270);
             dgvMapping.TabIndex = 17;
+            dgvMapping.CellContentClick += dgvMapping_CellContentClick;
             // 
             // flowLayoutPanel2
             // 
@@ -232,28 +235,31 @@
             // 
             btnSaveMapping.Location = new Point(3, 3);
             btnSaveMapping.Name = "btnSaveMapping";
-            btnSaveMapping.Size = new Size(112, 34);
+            btnSaveMapping.Size = new Size(144, 43);
             btnSaveMapping.TabIndex = 1;
             btnSaveMapping.Text = "Save JSON";
             btnSaveMapping.UseVisualStyleBackColor = true;
+            btnSaveMapping.Click += btnSaveMapping_Click;
             // 
             // btnTransformPreview
             // 
-            btnTransformPreview.Location = new Point(121, 3);
+            btnTransformPreview.Location = new Point(153, 3);
             btnTransformPreview.Name = "btnTransformPreview";
-            btnTransformPreview.Size = new Size(112, 34);
+            btnTransformPreview.Size = new Size(144, 43);
             btnTransformPreview.TabIndex = 2;
             btnTransformPreview.Text = "Preview";
             btnTransformPreview.UseVisualStyleBackColor = true;
+            btnTransformPreview.Click += btnTransformPreview_Click;
             // 
             // btnTransfer
             // 
-            btnTransfer.Location = new Point(239, 3);
+            btnTransfer.Location = new Point(303, 3);
             btnTransfer.Name = "btnTransfer";
-            btnTransfer.Size = new Size(112, 34);
+            btnTransfer.Size = new Size(144, 43);
             btnTransfer.TabIndex = 3;
             btnTransfer.Text = "Transfer";
             btnTransfer.UseVisualStyleBackColor = true;
+            btnTransfer.Click += btnTransfer_Click;
             // 
             // btnLoadMapping
             // 
@@ -263,6 +269,7 @@
             btnLoadMapping.TabIndex = 0;
             btnLoadMapping.Text = "Upload JSON";
             btnLoadMapping.UseVisualStyleBackColor = true;
+            btnLoadMapping.Click += btnLoadMapping_Click;
             // 
             // dgvPreview
             // 
