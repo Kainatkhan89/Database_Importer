@@ -375,7 +375,7 @@ namespace Database_Importer
                 var acc = row.Cells[0].Value?.ToString();
                 var sql = row.Cells[1].Value?.ToString();
                 var expr = row.Cells[2].Value?.ToString();
-                if (string.IsNullOrEmpty(acc) || string.IsNullOrEmpty(sql)) continue;
+                if (string.IsNullOrEmpty(sql)) continue;
                 maps.Add(new MappingRow { AccessColumn = acc, SqlColumn = sql, TransformExpression = expr });
             }
 
@@ -390,15 +390,18 @@ namespace Database_Importer
                 foreach (var m in maps)
                 {
                     object val = DBNull.Value;
-                    if (accessDT.Columns.Contains(m.AccessColumn))
-                        val = aRow[m.AccessColumn];
-
-
+                    if (!string.IsNullOrEmpty(m.AccessColumn))
+                    {
+                        if (accessDT.Columns.Contains(m.AccessColumn))
+                            val = aRow[m.AccessColumn];
+                    }
+                    
                     // If transform expression provided - evaluate with variable 'x'
                     if (!string.IsNullOrWhiteSpace(m.TransformExpression))
                     {
                         try
                         {
+                            
                             // pass 'x' and allow null handling
                             interpreter.SetVariable("x", val);
                             var result = interpreter.Eval(m.TransformExpression);
@@ -452,7 +455,7 @@ namespace Database_Importer
 
     public class MappingRow
     {
-        public string AccessColumn { get; set; }
+        public string? AccessColumn { get; set; }
         public string SqlColumn { get; set; }
         public string TransformExpression { get; set; } // e.g. "(x - 901000) + 901001000" or "x == null ? 0 : x"
     }
